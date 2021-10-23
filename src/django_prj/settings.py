@@ -1,6 +1,8 @@
 import os
 from pathlib import Path
 
+AUTH_USER_MODEL = 'core.User'
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'se$cr!et')
 DEBUG = True
@@ -13,6 +15,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 3rd party
+    'django_unicorn',
+    # my apps
+    'core',
 ]
 
 MIDDLEWARE = [
