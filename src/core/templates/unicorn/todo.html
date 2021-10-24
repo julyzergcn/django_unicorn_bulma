@@ -1,0 +1,26 @@
+{% load unicorn %}
+
+<div>
+    <form unicorn:submit.prevent="add">
+        <input type="text" unicorn:model.lazy="task" placeholder="New task" id="task"></input>
+        <span>{{ task }}</span>
+    </form>
+    <button unicorn:click="add">Add</button>
+
+    <p>
+        {% if tasks %}
+        <ul>
+            {% for task in tasks %}
+            <li>{{ task }} ({{ task|length }})</li>
+            {% endfor %}
+        </ul>
+
+        <button unicorn:click="$reset">Clear all tasks</button>
+
+
+        {% else %}
+            No tasks 🎉
+            {% unicorn 'user-list' parent=view %}
+        {% endif %}
+    </p>
+</div>

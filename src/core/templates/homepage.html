@@ -1,0 +1,36 @@
+{% load unicorn %}
+
+{% unicorn_scripts %}
+
+<script src="https://cdn.jsdelivr.net/npm/htmx.org@1.6.0/dist/htmx.min.js"></script>
+
+{% unicorn 'user-list' %}
+
+
+<hr>
+<h4>typeahead</h4>
+{% unicorn 'typeahead' %}
+
+<hr>
+
+<button
+  hx-get="{% url 'core:load_more' %}"
+  hx-target="#loaded-more"
+>Load more</button>
+
+<div id="loaded-more">
+</div>
+
+<script>
+  function safeEval(str) {
+    return Function('"use strict";' + str)();
+  }
+
+  document.addEventListener('htmx:afterSettle', function(e) {
+    let module = htmx.find(e.detail.target, 'script[type="module"]');
+    if (module && module.textContent) {
+      safeEval(module.textContent);
+      safeEval(module.textContent);
+    }
+  });
+</script>

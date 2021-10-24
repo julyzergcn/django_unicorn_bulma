@@ -1,6 +1,10 @@
-from django.http import HttpResponse
+
 from django.shortcuts import render
 
 
 def homepage(request):
-    return HttpResponse('test')
+    return render(request, 'homepage.html')
+
+
+def load_more(request):
+    return render(request, 'load_more.html')
