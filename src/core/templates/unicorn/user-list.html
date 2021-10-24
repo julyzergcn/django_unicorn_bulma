@@ -1,15 +1,11 @@
-<div>
+{% load unicorn %}
+
+<div unicorn:poll-3000>
+  <p>{{ current_time|date:'H:i:s' }}</p>
+
   <ul>
     {% for u in users %}
-      <li>{{ u }}</li>
-    {% endfor %}  
-  </ul>
-
-  <hr>
-
-  <ul>
-    {% for s in steps %}
-      <li>{{ s }}</li>
+      {% unicorn 'user-detail' user=u %}
     {% endfor %}  
   </ul>
 </div>

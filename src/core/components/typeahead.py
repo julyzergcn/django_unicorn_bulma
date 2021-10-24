@@ -1,5 +1,7 @@
 from django_unicorn.components import UnicornView
 
+from core.models import User
+
 
 class TypeaheadView(UnicornView):
     state = ""
@@ -63,7 +65,8 @@ class TypeaheadView(UnicornView):
     def states(self):
         if not self.state:
             return []
-
+        return User.objects.filter(username__icontains=self.state.lower()).values('username', 'email')
+        return [u.username for u in User.objects.all() if u.username.startswith(self.state.lower())]
         return [s for s in self.ALL_STATES if s.lower().startswith(self.state.lower())]
 
     class Meta:
