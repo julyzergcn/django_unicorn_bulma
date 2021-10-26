@@ -1,0 +1,65 @@
+<div id="add_new_user">
+
+    Username:
+    <input
+        u:model.defer="username"
+        type="text"
+        id="id_username"
+        autocomplete="off"
+    />
+    <br>
+    {% if unicorn.errors.username.0.message %}
+        <span style="color:brown">{{ unicorn.errors.username.0.message }}</span>
+        <br>
+    {% endif %}
+
+    Email:
+    <input
+        u:model.defer="email"
+        u:key="email_add"
+        type="text"
+        id="id_email"
+    />
+    <br>
+    {% if unicorn.errors.email.0.message %}
+        <span style="color:brown">{{ unicorn.errors.email.0.message }}</span>
+        <br>
+    {% endif %}
+
+
+    Password:
+    <input
+        u:model.defer="password"
+        type="password"
+        id="id_password"
+        autocomplete="off"
+    />
+    <br>
+    {% if unicorn.errors.password.0.message %}
+        <span style="color:brown">{{ unicorn.errors.password.0.message }}</span>
+        <br>
+    {% endif %}
+
+
+    Password(confirm):
+    <input
+        u:model.defer="password_confirm"
+        type="password"
+        id="id_email"
+    />
+    <br>
+    {% if unicorn.errors.password_confirm.0.message %}
+        <span style="color:brown">{{ unicorn.errors.password_confirm.0.message }}</span>
+        <br>
+    {% endif %}
+
+    <br>
+    <button type="button"
+        u:click="save_user"
+        u:loading.attr="disabled"
+        u:partial.id="#add_new_user"
+    >
+        Save User
+    </button>
+
+</div>

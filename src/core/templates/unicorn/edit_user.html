@@ -1,0 +1,48 @@
+<div>
+
+  Email:
+  <input
+    u:model="email"
+    type="text"
+    id="id_email"
+    u:key="edit_email"
+  />
+  <br>
+  {% if unicorn.errors.email.0.message %}
+    <span style="color:brown">{{ unicorn.errors.email.0.message }}</span>
+    <br>
+  {% endif %}
+
+  First Name:
+  <input
+    u:model.defer="first_name"
+    type="text"
+    id="id_first_name"
+  />
+  <br>
+  {% if unicorn.errors.first_name.0.message %}
+    <span style="color:brown">{{ unicorn.errors.first_name.0.message }}</span>
+    <br>
+  {% endif %}
+
+  Last Name:
+  <input
+    u:model.defer="last_name"
+    type="text"
+    id="id_last_name"
+  />
+  <br>
+  {% if unicorn.errors.last_name.0.message %}
+    <span style="color:brown">{{ unicorn.errors.last_name.0.message }}</span>
+    <br>
+  {% endif %}
+
+  <br>
+  <button
+    u:click="save_user"
+    u:loading.attr="disabled"
+  >
+    Save User
+  </button>
+
+</div>

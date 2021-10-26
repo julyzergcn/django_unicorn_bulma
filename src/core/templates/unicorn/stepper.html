@@ -12,7 +12,7 @@
           {% if forloop.counter0 == current_step_index %}
             style="font-weight: bold; color: #f00; font-size: 18px"
           {% endif %}
-          u:click="set_step_index({{ forloop.counter0 }})"
+          u:click.prevent="set_step_index({{ forloop.counter0 }})"
         >
           {{ s }}
         </a>
@@ -59,7 +59,7 @@
   </div>
 
 
-  <div class="d-none"
+  <div class="d-none" id="id_user_list"
     {% if current_step_index >= 2 %}
       style="display: block"
     {% endif %}
@@ -68,6 +68,24 @@
     <div id="user-list">
       {% unicorn 'user-list' parent=view %}
     </div>
+  </div>
+
+  <div class="d-none"
+    {% if current_step_index >= 3 %}
+      style="display: block"
+    {% endif %}
+  >
+    <h4>User edit</h4>
+    {% unicorn 'edit_user' parent=view user_id=2 %}
+  </div>
+
+  <div class="d-none"
+    {% if current_step_index >= 4 %}
+      style="display: block"
+    {% endif %}
+  >
+    <h4>User add</h4>
+    {% unicorn 'add_user' parent=view %}
   </div>
 
 </div>
