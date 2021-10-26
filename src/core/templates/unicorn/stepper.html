@@ -1,0 +1,73 @@
+{% load unicorn %}
+
+<div>
+  <style>
+    .d-none {display: none}
+  </style>
+
+  <ul>
+    {% for s in steps %}
+      <li style="display: inline-block; padding:5px 10px; margin: 5px">
+        <a href="#"
+          {% if forloop.counter0 == current_step_index %}
+            style="font-weight: bold; color: #f00; font-size: 18px"
+          {% endif %}
+          u:click="set_step_index({{ forloop.counter0 }})"
+        >
+          {{ s }}
+        </a>
+      </li>
+    {% endfor %}
+
+    <button
+      {% if not has_previous_step %}disabled{% endif %}
+      u:click="goto_previous_step"
+      u:loading.attr="disabled"
+    >
+      Previous Step
+    </button>
+
+    <button
+      {% if not has_next_step %}disabled{% endif %}
+      u:click="goto_next_step"
+      u:loading.attr="disabled"
+    >
+      Next Step
+    </button>
+  </ul>
+
+  <div class="d-none"
+    {% if current_step_index >= 0 %}
+      style="display: block"
+    {% endif %}
+  >
+    <h4>typeahead</h4>
+    <div id="type-ahead">
+      {% unicorn 'typeahead' parent=view %}
+    </div>
+  </div>
+
+  <div class="d-none"
+    {% if current_step_index >= 1 %}
+      style="display: block"
+    {% endif %}
+  >
+    <h4>Todo</h4>
+    <div id="todo">
+      {% unicorn 'todo' parent=view %}
+    </div>
+  </div>
+
+
+  <div class="d-none"
+    {% if current_step_index >= 2 %}
+      style="display: block"
+    {% endif %}
+  >
+    <h4>User list</h4>
+    <div id="user-list">
+      {% unicorn 'user-list' parent=view %}
+    </div>
+  </div>
+
+</div>
