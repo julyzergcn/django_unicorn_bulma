@@ -1,22 +1,17 @@
-<div>
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Username</th>
-        <th>Email</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>{{ user.id }}</td>
-        <td>{{ user.username }}</td>
-        <td>{{ user.email }}</td>
-        <td>{{ user.first_name }}</td>
-        <td>{{ user.last_name }}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<tr id="id_user_{{ user.id }}">
+  <td>{{ user.id }}</td>
+  <td>{{ user.username }}</td>
+  <td>{{ user.email }}</td>
+  <td>{{ user.first_name }}</td>
+  <td>{{ user.last_name }}</td>
+  <td>
+    <a href="#"
+      hx-post="{% url 'core:delete_user' user.id %}"
+      hx-target="#id_user_{{ user.id }}"
+      hx-swap="outerHTML"
+      hx-include="[name=csrfmiddlewaretoken]"
+    >
+      X
+    </a>
+  </td>
+</tr>

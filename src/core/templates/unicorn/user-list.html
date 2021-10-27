@@ -1,9 +1,21 @@
 {% load unicorn %}
 
 <div>
-  <ul>
-    {% for u in users %}
-      {% unicorn 'user-detail' user=u %}
-    {% endfor %}  
-  </ul>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for u in users %}
+        {% unicorn 'user-detail' user=u %}
+      {% endfor %}
+    </tbody>
+  </table>
 </div>
