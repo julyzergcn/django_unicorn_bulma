@@ -8,6 +8,10 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'se$cr!et')
 DEBUG = True
 ALLOWED_HOSTS = []
 
+STATICFILES_DIRS = (
+    BASE_DIR / 'bulma_static',
+)
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
