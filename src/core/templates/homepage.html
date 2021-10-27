@@ -1,53 +1,57 @@
+{% extends 'my_bulma_base.html' %}
+{% load static %}
 {% load unicorn %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+{% block title %}Bulma Site{% endblock %}
+
+
+{% block css %}
+  {{ block.super }}
   {% unicorn_scripts %}
-</head>
-<body>
-
-{% csrf_token %}
-
-{% unicorn 'stepper' %}
-
-<hr class="my-4">
-
-<button
-  hx-get="{% url 'core:load_more' %}"
-  hx-target="#loaded-more"
->
-  Load more
-</button>
-
-<div id="loaded-more">
-</div>
+{% endblock css %}
 
 
-<script src="https://cdn.jsdelivr.net/npm/htmx.org@1.6.0/dist/htmx.min.js"></script>
+{% block content %}
 
-<script>
-  function safeEval(str) {
-    return Function('"use strict";' + str)();
-  }
+  {% csrf_token %}
 
-  document.addEventListener('htmx:afterSettle', function(e) {
-    let module = htmx.find(e.detail.target, 'script[type="module"]');
-    if (module && module.textContent) {
-      safeEval(module.textContent);
+  {% unicorn 'stepper' %}
+
+  <hr class="my-4">
+
+  <button
+    hx-get="{% url 'core:load_more' %}"
+    hx-target="#loaded-more"
+  >
+    Load more
+  </button>
+
+  <div id="loaded-more">
+  </div>
+
+{% endblock content %}
+
+
+{% block js %}
+  {{ block.super }}
+  <script src="https://cdn.jsdelivr.net/npm/htmx.org@1.6.0/dist/htmx.min.js"></script>
+
+  <script>
+    function safeEval(str) {
+      return Function('"use strict";' + str)();
     }
-  });
 
-  document.addEventListener("DOMContentLoaded", (event) => {
-    Unicorn.addEventListener("updated", (component) => {
-      // console.log("got updated", component)
+    document.addEventListener('htmx:afterSettle', function(e) {
+      let module = htmx.find(e.detail.target, 'script[type="module"]');
+      if (module && module.textContent) {
+        safeEval(module.textContent);
+      }
     });
-  });
-</script>
 
-</body>
-</html>
+    document.addEventListener("DOMContentLoaded", (event) => {
+      Unicorn.addEventListener("updated", (component) => {
+        // console.log("got updated", component)
+      });
+    });
+  </script>
+{% endblock js %}

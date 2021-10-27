@@ -17,6 +17,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 3rd party
     'django_unicorn',
+    'bulma',
     # my apps
     'core',
 ]

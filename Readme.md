@@ -15,3 +15,4 @@ django-admin startproject django_prj
 mv django_prj src
 
 echo "cd src" >> load_env.sh
+

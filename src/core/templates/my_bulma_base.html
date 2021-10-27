@@ -1,0 +1,10 @@
+{% extends 'bulma/base.html' %}
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'bulma/css/style.min.css' %}">
+{% endblock css %}
+
+{% block javascript %}
+  {% block js %}{% endblock js %}
+{% endblock javascript %}
