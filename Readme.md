@@ -20,6 +20,8 @@ echo "cd src" >> load_env.sh
 
 ### Use bulma
 
+##### Use bulma sass from django-bulma
+
 Add `STATICFILES_DIRS` to `settings.py`
 
 ```python
@@ -32,5 +34,21 @@ Then issue command
 
 ```sh
 python manage.py copy_bulma_static_into_project
-python manage.py bulma install
+cd bulma_static/bulma/sass && yarn && yarn start
+```
+
+##### Or create a bulma_theme app to save the bulma sass files
+
+```sh
+python manage.py startapp bulma_theme
+mkdir -p bulma_theme/static
+cp -r bulma_static/bulma/sass bulma_theme/nodejs_static
+rm -r bulma_static
+cd bulma_theme/nodejs_static
+yarn add font-awesome
+yarn add --dev postcss googlefonts-inliner
+yarn upgrade node-sass@^6 postcss-cli@^9 clean-css-cli@^5
+cp -r node_modules/font-awesome/fonts ../static/
+yarn build
+yarn start
 ```

@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'bulma',
     # my apps
     'core',
+    'bulma_theme',
 ]
 
 MIDDLEWARE = [

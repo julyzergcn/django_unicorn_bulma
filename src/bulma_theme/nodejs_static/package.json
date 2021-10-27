@@ -1,0 +1,36 @@
+{
+  "author": {
+    "name": "Tim Kamanin",
+    "email": "tim@timonweb.com",
+    "url": "https://timonweb.com"
+  },
+  "description": "Bulma for Django",
+  "dependencies": {
+    "bulma": "^0.9.3",
+    "font-awesome": "^4.7.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.8.0",
+    "clean-css-cli": "^5",
+    "googlefonts-inliner": "^0.3.3",
+    "node-sass": "^6",
+    "postcss": "^8.3.11",
+    "postcss-cli": "^9",
+    "rimraf": "^3.0.2"
+  },
+  "license": "MIT",
+  "main": "style.sass",
+  "style": "../css/style.min.css",
+  "name": "django_bulma",
+  "scripts": {
+    "build": "npm run build-clean && npm run build-sass && npm run build-autoprefix && npm run build-googlefonts-inliner && npm run build-cleancss && npm run build-copy-fonts",
+    "build-autoprefix": "postcss -u autoprefixer -m false -o ../static/css/bulma.css ../static/css/bulma.css",
+    "build-googlefonts-inliner": "postcss -u googlefonts-inliner -o ../static/css/bulma.css ../static/css/bulma.css",
+    "build-cleancss": "cleancss -o ../static/css/bulma.min.css ../static/css/bulma.css",
+    "build-copy-fonts": "mv googlefonts ../static/css/ && cp -r node_modules/font-awesome/fonts ../static/",
+    "build-clean": "rimraf css",
+    "build-sass": "node-sass --output-style expanded --source-map true style.sass ../static/css/bulma.css",
+    "deploy": "npm run build",
+    "start": "npm run build-sass -- --watch"
+  }
+}
