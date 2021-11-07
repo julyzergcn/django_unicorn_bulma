@@ -1,0 +1,50 @@
+{% load static %}
+
+<nav class="navbar has-shadow">
+  <div class="navbar-brand">
+
+    {% block top_navbar_logo %}
+      <a class="navbar-item" href="/">
+        <img src="#" alt="logo">
+      </a>
+    {% endblock %}
+
+    <div class="navbar-burger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  <div class="navbar-menu">
+    <div class="navbar-start">
+      {% block top_navbar_menu_start %}
+      <a href="#" class="navbar-item">
+        Service
+      </a>
+      <a href="/" class="navbar-item">
+        Support
+      </a>
+      <a href="#" class="navbar-item">
+        About
+      </a>
+      <a href="#" class="navbar-item">
+        Contact
+      </a>
+      {% endblock %}
+    </div>
+
+    <div class="navbar-end">
+      {% block top_navbar_menu_end %}
+        <a href="#" class="navbar-item">
+          Login
+        </a>
+        <a href="#" class="navbar-item">
+          <span class="button is-info">
+            Start for free
+          </span>
+        </a>
+      {% endblock %}
+    </div> {# .navbar-end #}
+  </div> {# .navbar-menu #}
+</nav>

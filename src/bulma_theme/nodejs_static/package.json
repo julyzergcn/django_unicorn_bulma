@@ -7,7 +7,9 @@
   "description": "Bulma for Django",
   "dependencies": {
     "bulma": "^0.9.3",
-    "font-awesome": "^4.7.0"
+    "bulma-o-steps": "^1.1.0",
+    "font-awesome": "^4.7.0",
+    "htmx.org": "^1.6.0"
   },
   "devDependencies": {
     "autoprefixer": "^9.8.0",
@@ -23,11 +25,12 @@
   "style": "../css/style.min.css",
   "name": "django_bulma",
   "scripts": {
-    "build": "npm run build-clean && npm run build-sass && npm run build-autoprefix && npm run build-googlefonts-inliner && npm run build-cleancss && npm run build-copy-fonts",
+    "build": "npm run build-clean && npm run build-sass && npm run build-autoprefix && npm run build-googlefonts-inliner && npm run build-cleancss && npm run copy-fonts && npm run copy-js",
     "build-autoprefix": "postcss -u autoprefixer -m false -o ../static/css/bulma.css ../static/css/bulma.css",
     "build-googlefonts-inliner": "postcss -u googlefonts-inliner -o ../static/css/bulma.css ../static/css/bulma.css",
     "build-cleancss": "cleancss -o ../static/css/bulma.min.css ../static/css/bulma.css",
-    "build-copy-fonts": "mv googlefonts ../static/css/ && cp -r node_modules/font-awesome/fonts ../static/",
+    "copy-fonts": "mv googlefonts ../static/css/ && cp -r node_modules/font-awesome/fonts ../static/",
+    "copy-js": "mkdir -p ../static/js && cp node_modules/htmx.org/dist/htmx.min.js ../static/js/",
     "build-clean": "rimraf css",
     "build-sass": "node-sass --output-style expanded --source-map true style.sass ../static/css/bulma.css",
     "deploy": "npm run build",

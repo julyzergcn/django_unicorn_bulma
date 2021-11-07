@@ -1,0 +1,12 @@
+{% if messages %}
+  <div class="messages columns is-desktop">
+    <div class="column is-4 is-offset-4">
+      {% for message in messages %}
+        <div class="message
+            {% if message.tags %}is-{{ message.tags|bulma_message_tag }}{% endif %}">
+          <div class="message-body">{{ message }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}

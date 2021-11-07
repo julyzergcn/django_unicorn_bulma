@@ -13,6 +13,7 @@ STATICFILES_DIRS = (
 )
 
 INSTALLED_APPS = [
+    'bulma_theme',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -24,7 +25,6 @@ INSTALLED_APPS = [
     'bulma',
     # my apps
     'core',
-    'bulma_theme',
 ]
 
 MIDDLEWARE = [

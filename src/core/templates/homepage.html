@@ -1,9 +1,6 @@
-{% extends 'base_bulma.html' %}
+{% extends 'bulma/base.html' %}
 {% load static %}
 {% load unicorn %}
-
-{% block title %}Bulma Site{% endblock %}
-
 
 {% block css %}
   {{ block.super }}
@@ -11,7 +8,7 @@
 {% endblock css %}
 
 
-{% block content %}
+{% block body %}
 
   {% csrf_token %}
 
@@ -33,29 +30,4 @@
   <div id="loaded-more">
   </div>
 
-{% endblock content %}
-
-
-{% block js %}
-  {{ block.super }}
-  <script src="https://cdn.jsdelivr.net/npm/htmx.org@1.6.0/dist/htmx.min.js"></script>
-
-  <script>
-    function safeEval(str) {
-      return Function('"use strict";' + str)();
-    }
-
-    document.addEventListener('htmx:afterSettle', function(e) {
-      let module = htmx.find(e.detail.target, 'script[type="module"]');
-      if (module && module.textContent) {
-        safeEval(module.textContent);
-      }
-    });
-
-    document.addEventListener("DOMContentLoaded", (event) => {
-      Unicorn.addEventListener("updated", (component) => {
-        // console.log("got updated", component)
-      });
-    });
-  </script>
-{% endblock js %}
+{% endblock %}

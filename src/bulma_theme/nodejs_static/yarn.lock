@@ -227,6 +227,18 @@ browserslist@^4.12.0:
     node-releases "^2.0.1"
     picocolors "^1.0.0"
 
+bulma-o-steps@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/bulma-o-steps/-/bulma-o-steps-1.1.0.tgz#55ea73169e0f2a6bf502a23b485a012319512a7e"
+  integrity sha512-RelajORQ+tIY+CruowsEUzE6T5W5cbPp8Vskvu6Vgx5W45PcYhoP066Ls7kwMZl8M8djkxg+BcUswkX1a20hzg==
+  dependencies:
+    bulma "^0.8.2"
+
+bulma@^0.8.2:
+  version "0.8.2"
+  resolved "https://registry.yarnpkg.com/bulma/-/bulma-0.8.2.tgz#5d928f16ed4a84549c2873f95c92c38c69c631a7"
+  integrity sha512-vMM/ijYSxX+Sm+nD7Lmc1UgWDy2JcL2nTKqwgEqXuOMU+IGALbXd5MLt/BcjBAPLIx36TtzhzBcSnOP974gcqA==
+
 bulma@^0.9.3:
   version "0.9.3"
   resolved "https://registry.yarnpkg.com/bulma/-/bulma-0.9.3.tgz#ddccb7436ebe3e21bf47afe01d3c43a296b70243"
@@ -760,6 +772,11 @@ hosted-git-info@^4.0.1:
   integrity sha512-c9OGXbZ3guC/xOlCg1Ci/VgWlwsqDv1yMQL1CWqXDL0hDjXuNcq0zuR4xqPSuasI3kqFDhqSyTjREz5gzq0fXg==
   dependencies:
     lru-cache "^6.0.0"
+
+htmx.org@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/htmx.org/-/htmx.org-1.6.0.tgz#a9f6e8160402208ba3b2ce278498ca136972c167"
+  integrity sha512-/XzLC1QgqdBDIzxGKYN1IbmPHz9QFyId/x+ujJYd4febA99lb1hozyCASNdMHUMTXIqtzBYs2hL2nJfVD/IELQ==
 
 http-signature@~1.2.0:
   version "1.2.0"

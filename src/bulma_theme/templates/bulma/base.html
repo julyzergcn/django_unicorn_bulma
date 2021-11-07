@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="shortcut icon" href="#">
+
+  <title>{% block title %}{% endblock %}</title>
+
+  {% block css %}
+    <link rel="stylesheet" href="{% static 'css/bulma.min.css' %}">
+  {% endblock %}
+
+</head>
+<body>
+  {% block body %}
+  {% endblock %}
+
+  {% block js %}
+
+    <script src="{% static 'js/htmx.min.js' %}"></script>
+    <script>
+      document.body.addEventListener('htmx:configRequest', function(e) {
+        e.detail.headers['X-CSRFToken'] = '{{ csrf_token|safe }}';
+      });
+
+      document.body.addEventListener('unicorn_call', function(evt){
+        Unicorn.call(evt.detail.component, evt.detail.method);
+      })
+
+      function safeEval(str) {
+        return Function('"use strict";' + str)();
+      }
+
+      document.addEventListener('htmx:afterSettle', function(e) {
+        let module = htmx.find(e.detail.target, 'script[type="module"]');
+        if (module && module.textContent) {
+          safeEval(module.textContent);
+        }
+      });
+
+      document.addEventListener("DOMContentLoaded", (event) => {
+        Unicorn.addEventListener("updated", (component) => {
+          // console.log("got updated", component)
+          htmx.process(component.document);
+        });
+      });
+    </script>
+
+  {% endblock %}
+</body>
+</html>
